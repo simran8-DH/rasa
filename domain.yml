@@ -1,0 +1,308 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+
+  - policy_details
+  - provide_mobile
+  - provide_dob
+
+  - fund_value
+
+  - TOPUP
+
+  - Statements
+  - provide_statement_type
+
+  - PayPremium
+  - provide_payment_option
+
+  - ExistingProfileDetails
+
+  - SetSI
+
+  - request_a_callback
+  - provide_customer_type
+
+  - PANUpdate
+
+  - claim_status
+  - provide_claim_number
+
+  - FAQs
+
+  # - nlu_fallback
+
+entities:
+  - mobile_number
+  - dob
+  - statement_type
+  - payment_type
+  - customer_type
+  - claim_number
+
+slots:
+  mobile_number:
+    type: text
+    # should this slot affect the conversation going if yes then true
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: mobile_number
+      
+  dob:
+    type: text
+    # should this slot affect the conversation going if yes then true
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: dob
+  
+  payment_type:
+    type: text
+    # should this slot affect the conversation going if yes then true
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: payment_type
+  
+  statement_type:
+    type: text
+    # should this slot affect the conversation going if yes then true
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: statement_type
+
+  customer_type:
+    type: text
+    # should this slot affect the conversation going if yes then true
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: customer_type
+
+  claim_number:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: claim_number
+  
+  # slot created to track the user typed what,ie to remember bot was working on which story
+  user_goal:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: custom
+  
+
+# when multiple slots and entities are there, then we can use forms
+forms:
+  #form for sheet variables 1,2,4
+  user_details_form:
+    required_slots:
+      - mobile_number
+      - dob
+
+  #form for sheet variable 3-statements
+  statements_form:
+    required_slots:
+      - statement_type
+      - mobile_number
+      - dob
+
+  #form for sheet variable 5-pay premium
+  paypremium_form:
+    required_slots:
+      - payment_type
+      - mobile_number
+      - dob
+  
+  #form for sheet variable 7-callback
+  callback_form:
+    required_slots:
+      - customer_type
+      - mobile_number
+      - dob
+
+responses:
+
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+  # rasa automatically calls mobile_number and dob , as i have mentioned both these in 
+  # user details form
+  utter_ask_mobile_number:
+    - text: "Ok. To get your Policy Details, please share your 10-digit mobile number."
+      condition:
+        - type: slot
+          name: user_goal
+          value: policy
+
+    - text: "Ok. To check your Fund Value, may I have your 10-digit mobile number?"
+      condition:
+        - type: slot
+          name: user_goal
+          value: fund
+
+    - text: "Ok, so for your Top-Up request, please provide your 10-digit mobile number."
+      condition:
+        - type: slot
+          name: user_goal
+          value: topup
+
+    - text: "Sure. To fetch your {statement_type} from statements, please enter your 10-digit mobile number."
+      condition:
+        - type: slot
+          name: user_goal
+          value: statement
+
+    - text: "Sure. You're paying a Premium using {payment_type} — please enter your mobile number linked to your policy."
+      condition:
+        - type: slot
+          name: user_goal
+          value: paypremium
+
+    - text: "Ok so, to retrieve your Profile Details, please share your 10-digit mobile number."
+      condition:
+        - type: slot
+          name: user_goal
+          value: profiledetails
+
+    - text: "Let's set up your Standing Instruction. Kindly provide your 10-digit mobile number."
+      condition:
+        - type: slot
+          name: user_goal
+          value: standinginstruction
+
+    - text: "Sure. To schedule your {customer_type} callback , could you please share your 10-digit mobile number?"
+      condition:
+        - type: slot
+          name: user_goal
+          value: callback
+
+    - text: "To update your PAN, please provide your mobile number linked to the policy."
+      condition:
+        - type: slot
+          name: user_goal
+          value: panupdate
+
+    - text: "Please enter your 10-digit mobile number." 
+
+  utter_ask_dob:
+    - text: "Now, please enter your Date of Birth in YYYY/MM/DD format to fetch your policy details."
+      condition:
+        - type: slot
+          name: user_goal
+          value: policy
+
+    - text: "Now, please provide your Date of Birth in YYYY/MM/DD format to check your fund value."
+      condition:
+        - type: slot
+          name: user_goal
+          value: fund
+
+    - text: "Ok,please enter your Date of Birth in YYYY/MM/DD format to proceed with the top-up."
+      condition:
+        - type: slot
+          name: user_goal
+          value: topup
+
+    - text: "Ok, now please share your Date of Birth in YYYY/MM/DD format so I can get your statement."
+      condition:
+        - type: slot
+          name: user_goal
+          value: statement
+
+    - text: "Ok, now please enter your Date of Birth in YYYY/MM/DD format to complete your premium payment."
+      condition:
+        - type: slot
+          name: user_goal
+          value: paypremium
+
+    - text: "To proceed, may I have your Date of Birth in YYYY/MM/DD format?"
+      condition:
+        - type: slot
+          name: user_goal
+          value: profiledetails
+
+    - text: "Ok. Please provide your Date of Birth in YYYY/MM/DD format to set up the standing instruction."
+      condition:
+        - type: slot
+          name: user_goal
+          value: standinginstruction
+
+    - text: "May I also have your Date of Birth in YYYY/MM/DD format to validate your request?"
+      condition:
+        - type: slot
+          name: user_goal
+          value: callback
+
+    - text: "To update your PAN details, please enter your Date of Birth in YYYY/MM/DD format."
+      condition:
+        - type: slot
+          name: user_goal
+          value: panupdate
+
+    - text: "Please enter your Date of Birth in YYYY/MM/DD format."
+
+  utter_ask_statement_type:
+  - text: "Select the type of statement from below:\n1. Unit Statement \n2. TDS Certificate \n3. Annuity Certificate \n4. Premium receipt \n5. Premium notice \n6. Statement Summary \n7. PPC/Tax Certificate \n8. Lapsed Letter \n9. Loan Statement \n10. PPC/Tax Certificate \n11. E-Welcome Kit \n12. Reversionary bonus"
+
+
+  utter_ask_payment_type:
+  - text: "To help you please select one of the options below:\n1. Pay Online\n2. Request a Callback\n3. Activate Auto Debit"
+
+  utter_ask_customer_type:
+  - text: "Please select the option:\n1. New Customer\n2. Existing Customer\n"
+
+  utter_ask_claim_number:
+  - text: "Ok. I will provide you Claim Status. Can you please provide me your Claim Number in 'CL10' format?"
+
+  utter_FAQs:
+  - text: "You can find answers to FAQs on official website: https://darkhorsedigital.co.in/"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+actions:
+  - action_process_user_request
+  - action_check_claim_status
+  - action_set_fund_goal
+  - action_set_policy_goal
+  - action_set_topup_goal
+  - action_set_statement_goal
+  - action_set_paypremium_goal
+  - action_set_profiledetails_goal
+  - action_set_standinginstruction_goal
+  - action_set_callback_goal
+  - action_set_panupdate_goal    
+  - validate_user_details_form
+  - validate_statements_form
+  - validate_paypremium_form
+  - validate_callback_form                     
+  # - action_custom_fallback

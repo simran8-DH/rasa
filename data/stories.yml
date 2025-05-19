@@ -1,0 +1,121 @@
+version: "3.1"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+- story: get policy details
+  steps:
+    - intent: policy_details
+    # setting slot as policy to remember bot was working on which story
+    - action: action_set_policy_goal
+    - action: user_details_form
+    - active_loop: user_details_form
+    - active_loop: null
+    - action: action_process_user_request
+
+- story: get fund value
+  steps:
+    - intent: fund_value
+    # setting slot as fund to remember bot was working on which story
+    - action: action_set_fund_goal
+    - action: user_details_form
+    - active_loop: user_details_form
+    - active_loop: null
+    - action: action_process_user_request
+
+# top up means additional investments apart from the included
+- story: get top up
+  steps:
+    - intent: TOPUP
+    # setting slot as topup to remember bot was working on which story
+    - action: action_set_topup_goal
+    - action: user_details_form
+    - active_loop: user_details_form
+    - active_loop: null
+    - action: action_process_user_request
+
+- story: get statements
+  steps:
+    - intent: Statements
+    # setting slot as statement to remember bot was working on which story
+    - action: action_set_statement_goal
+    - action: statements_form
+    - active_loop: statements_form
+    - active_loop: null
+    - action: action_process_user_request
+
+- story: get pay premium
+  steps:
+    - intent: PayPremium
+    # setting slot as paypremium to remember bot was working on which story
+    - action: action_set_paypremium_goal
+    - action: paypremium_form
+    - active_loop: paypremium_form
+    - active_loop: null
+    - action: action_process_user_request
+
+- story: get existing profile details
+  steps:
+    - intent: ExistingProfileDetails
+    # setting slot as profiledetails to remember bot was working on which story
+    - action: action_set_profiledetails_goal
+    - action: user_details_form
+    - active_loop: user_details_form
+    - active_loop: null
+    - action: action_process_user_request
+
+- story: set standing instruction
+  steps:
+    - intent: SetSI
+    # setting slot as standinginstruction to remember bot was working on which story
+    - action: action_set_standinginstruction_goal
+    - action: user_details_form
+    - active_loop: user_details_form
+    - active_loop: null
+    - action: action_process_user_request
+
+- story: get request a callback
+  steps:
+    - intent: request_a_callback
+    # setting slot as callback to remember bot was working on which story
+    - action: action_set_callback_goal
+    - action: callback_form
+    - active_loop: callback_form
+    - active_loop: null
+    - action: action_process_user_request
+
+- story: update pan
+  steps:
+    - intent: PANUpdate
+    # setting slot as panupdate to remember bot was working on which story
+    - action: action_set_panupdate_goal
+    - action: user_details_form
+    - active_loop: user_details_form
+    - active_loop: null
+    - action: action_process_user_request

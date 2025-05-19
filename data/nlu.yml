@@ -1,0 +1,686 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+# sheet 1-for policy details,take mobile no and dob for validating
+- intent: policy_details
+  examples: |
+    - about my policy
+    - Advantage of my policy
+    - All Details
+    - all Policy details
+    - can you please tell me my policy issue date. My policy number is
+    - can you tell me life cover for my policy
+    - change in policy details
+    - check policy details
+    - Check policy premium
+    - Date of issue details from my policy. My policy number is 
+    - details and benefits
+    - details of my insurance
+    - Do I have to pay premium monthly
+    - existing policy details
+    - Frequency of payment
+    - Hello This is Hina kausar Mujib Nivekar. Policy no : 01586240
+    - Hi I want to enquire my policy
+    - how much amount I have covered for my policy
+    - how often do i have to pay premium
+    - how to check policy details
+    - how to know our policy detail
+    - I'd like to know more about my policy
+    - I have life insurance policy
+    - i have some specific query regarding my plan
+    - insurance cover amount
+    - is my payment monthly or half yearly
+    - Is my policy active or not
+    - issue date
+    - i want details of all my policy with your company
+    - i want to know my poilicy details
+    - I want to know my policy
+    - i want to know my policy details
+    - i want to know status of my policy
+    - know policy details
+    - know your policy details
+    - last payment
+    - Life Insurance cover
+    - life insurance policy details
+    - mere policy ka due date kya hai
+    - my policy detail
+    - my policy details
+    - new policy details
+    - On which day my policy was issued
+    - Person insured in the policy
+    - Policy closure date
+    - policy detail
+    - policy details
+    - policy dtails
+    - policy information
+    - Policy issuance date
+    - Policy name
+    - Policy redemption date
+    - policy snapshot
+    - Premium payment frequency
+    - Proposer name
+    - prudential policy details
+    - Rider Details
+    - RiderDetails
+    - risk commencement date
+    - show all details related to my policy
+    - Status of policy
+    - update policy details
+    - view policy details
+    - want to know the policies which i hold
+    - What are included in the policy
+    - what are my policy key features
+    - What is my insurance cover
+    - What is my life assured name
+    - what is rcd
+    - what is the date of issuanc
+    - what is the risk commencement date
+    - what is the total cover for my policy
+    - when have I paid premium
+    - Which name I have registered for my policy
+    - Which Plan I have taken from you
+    - Who is the policy owner
+    - Who owns the policy
+    - your policy details
+
+- intent: provide_mobile
+  examples: |
+    - My mobile number is [7083285854](mobile_number)
+    - [9856327410](mobile_number)
+    - It's [7894561230](mobile_number)
+    - Mobile: [8080808080](mobile_number)
+
+- intent: provide_dob
+  examples: |
+    - My date of birth is [06/01/1992](dob)
+    - [31/03/1992](dob)
+    - It's [05/12/1987](dob)
+    - DOB: [15/09/1990](dob)
+
+# sheet 2-for fund value,take mobile number and dob for validating
+- intent: fund_value
+  examples: |
+    - bifurcation
+    - Can you send the surrender amount of my policy
+    - current value
+    - fund
+    - fund details
+    - Fund NAV
+    - Fund Performance
+    - funds invested in
+    - fund status
+    - fund vale
+    - Fund Value
+    - Fundvalue
+    - fv
+    - How have my funds performed
+    - How is my fund performing as of date?
+    - How much is balance
+    - How to know the value of my pru investment
+    - i want fund value
+    - i want to check my fund value
+    - I want to know what the total amount in my policy number
+    - Money value of present policy
+    - my policies fund value is not showing
+    - NAV of the policy
+    - performance
+    - please share my portfolio details
+    - please tell me funds invested in
+    - Please tell  me my amount
+    - please tell me my fund bifurcation
+    - please tell me my fund details
+    - please tell me my fund performance
+    - please tell me my fund value
+    - please tell me my portfolio details
+    - please tell me my total investment
+    - please tell me my unit balance
+    - please tell me my unit value
+    - please tell me the net value of my policy
+    - share my portfolio details
+    - surrender amount
+    - tell me funds invested in
+    - tell me my amount
+    - tell me my fund details
+    - tell me my fund performance
+    - tell me my fund value
+    - tell me my portfolio details
+    - tell me my total investment
+    - tell me my unit balance
+    - tell me my unit value
+    - tell me the net value of my policy
+    - Unable to see fund value on your website
+    - Units
+    - value
+    - what are my fund details
+    - what are my portfolio details
+    - what funds am I invested in
+    - what funds have I invested in
+    - what is my fund bifurcation
+    - what is my fund detail
+    - what is my fund value
+    - What is my fund value?
+    - what is my portfolio detail
+    - what is my total investment
+    - What is my total investment till date
+    - What is my unit balance
+    - What is my unit value
+    - What is the net value of my policy
+    - which funds am I invested in
+    - which  funds have I invested in
+
+# sheet 3-for statements,take statement_type, mobile number and dob for validating
+- intent: Statements
+  examples: |
+    - Annual receipt for tax purpose
+    - D
+    - Download stmt
+    - estatememt
+    - i got a sms from icici pru life about an insurance, but unable to downlad the statement from your website
+    - income tax certificate
+    - I need my Annual receipt for tax purpose
+    - i need my IT returns receipt
+    - I need my premium paid details
+    - I need my Premium paid receipt
+    - I need my Premium receipt for tax purpose
+    - I need my tax certificate
+    - i need my tax receipt
+    - IT returns receipt
+    - I want my Annual receipt for tax purpose
+    - I want my IT returns receipt
+    - I want my premium paid details
+    - I want my Premium paid receipt
+    - I want my Premium receipt for tax purpose
+    - I want my tax certificate
+    - I want my tax receipt
+    - notice
+    - please send my Annual receipt for tax purpose
+    - Please send my IT returns receipt
+    - please send my policy doc
+    - please send my policy document
+    - please send my policy documents
+    - please send my premium paid details
+    - please send my Premium paid receipt
+    - please send my Premium receipt for tax purpose
+    - please send my tax receipt
+    - Please send policy document
+    - Policy Statement / Documents
+    - Policy Statement/ Documents
+    - Portfolio Statement
+    - PPC
+    - premium certificate
+    - Premium notice
+    - premium paid
+    - Premium Paid Certificate
+    - premium paid details
+    - Premium paid receipt
+    - Premium Receipt
+    - Premium receipt for tax purpose
+    - r
+    - renewal notice
+    - renewal payment notice
+    - Reversionary Bonus
+    - RV Bonus
+    - Send me my tax certificate
+    - send my Annual receipt for tax purpose
+    - Send my IT returns receipt
+    - send my policy doc
+    - send my policy document
+    - send my policy documents
+    - send my premium paid details
+    - Send my Premium paid receipt
+    - Send my Premium receipt for tax purpose
+    - send my tax receipt
+    - statement
+    - Statements
+    - Stetements
+    - Summary or portfolio statement
+    - Summary / Portfolio Statement
+    - Summary Statement
+    - t
+    - Tax certificate
+    - Tax receipt
+    - w
+    - Welcome kit
+    - We need a few documents to process
+    - We need a few documents tp process
+
+- intent: provide_statement_type
+  examples: |
+    - [Unit Statement](statement_type)
+    - [TDS Certificate](statement_type)
+    - [Annuity certificate](statement_type)
+    - [Premium receipt](statement_type)
+    - [Premium notice](statement_type)
+    - [Statement Summary](statement_type)
+    - [PPC/Tax Certificate](statement_type)
+    - [Lapsed Letter](statement_type)
+    - [Loan Statement](statement_type)
+    - [PPC/Tax Certificate](statement_type)
+    - [E-Welcome Kit](statement_type)
+    - [Reversionary bonus](statement_type)
+
+# sheet 4-for topup,take mobile number and dob for validating
+- intent: TOPUP
+  examples: |
+    - How to top up my funds?
+    - I need to do TOPUP
+    - I need TOP UP
+    - invest funds
+    - investment fund
+    - I want to invest more money in my policy
+    - I want to pay extra amount to the policy
+    - I want to Top Up
+    - super top up
+    - TOP UP
+    - TOP-UP
+    - TOPUP
+    - top up charges
+    - top up form
+    - top up health insurance
+    - top up life cover
+    - top up of policy
+    - Top-up policy
+    - top up premium
+    - tp up
+    - tpup
+
+# sheet 5-for pay premium,take payment_type,mobile number and dob for validating
+- intent: PayPremium
+  examples: |
+    - amount due
+    - Amount to be paid
+    - assist me with premium payment process
+    - Credit card
+    - due amount
+    - hat is the premium due date
+    - Hdfc credit card
+    - how can I pay amount
+    - How can I pay premium
+    - How could I pay Premium
+    - How much I have to pay
+    - how to make payment on website
+    - How to renew my Lapsed policy
+    - How to renew my policy
+    - how to revive my Lapsed policy
+    - how to revive my policy
+    - I am a new customer. I am paying premium first time
+    - I am looking for pay premium option
+    - I am searching premium payment process
+    - I have not paid premiums for my policy, can I revive my policy now
+    - I need to pay premium
+    - I want to do E - Premium Payment for premium
+    - I want to do insurance premium payment
+    - I want to do pay premium process
+    - I want to do quick premium payment
+    - I want to give you premium amount. Tell me the process
+    - I want to go to Pay premium page
+    - I want to know the premium payment process
+    - I want to know the process of pay premium
+    - I want to make online payment for premium
+    - I want to make payment by debit card
+    - I want to pay amount
+    - I want to pay in full premium amount
+    - I want to pay money for my policy
+    - I want to pay my money
+    - I want to pay my policy installment
+    - I want to pay my policy premium amount
+    - I want to pay my regular premium
+    - I want to pay my renewal premium
+    - I want to pay now
+    - I want to pay renewal premium payment
+    - i want to renew my policy
+    - Make online payment
+    - Make payment by credit card
+    - Make payment of premium
+    - My Policy Is Lapsed How to restart
+    - need to know the premium amount payable
+    - Online pay team plan
+    - payment amount pending
+    - Payments
+    - Payment was made on
+    - Pay premium
+    - pending amount
+    - pending payment
+    - pending premium amount
+    - Please help me to make online premium payment
+    - policy activation
+    - policy reinstatement
+    - premium
+    - premium bharna hai
+    - Premium Due
+    - Premium payment procedure
+    - Premium Value
+    - Reinstatement my policy
+    - To pay your premiums online now
+    - Want to pay my premium. It shows laps
+    - want to reinstate my policy
+    - Want to renew my Lapsed policy
+    - Want to renew my policy
+    - what is my pending premium
+    - What is my premium
+    - what is my premium due
+    - what is the process to revive my policy
+    - when I have to pay my next premium
+
+- intent: provide_payment_option
+  examples: |
+    - [Pay online](payment_type)
+    - [Request a callback](payment_type)
+    - [Activate auto debit](payment_type)
+
+# sheet 6-existing profile details 
+- intent: ExistingProfileDetails
+  examples: |
+    - can you please display my profile details
+    - can you please give me the details of my existing profile
+    - can you please send the details related to my profile
+    - can you please tell me the details of my profile
+    - can you please tell me which profile information do you have?
+    - can you tell me which details I have given you?
+    - how can I check my profile
+    - how can I get profile info
+    - how can I view my profile details
+    - How do I find My Profile information
+    - how to find out my profile details
+    - how to search my profile details
+    - how to see my own profile details
+    - how to see profile
+    - I am looking for my profile
+    - I am not able to see my profile related information. Can you please provide me those details
+    - I am searching for my profile
+    - I want to check my profile
+    - I want to get the information about my profile
+    - I want to know my Permanent Account number
+    - I want to know the deatils in my profile
+    - I want to know which mobile no I have registered with you
+    - I want to see my mobile number
+    - I want to see my PAN
+    - I want to see my profile
+    - I want to view my mobile no
+    - let me know my profile info
+    - My profile
+    - please give my profile details
+    - please show my profile info
+    - Profile details
+    - profile info
+    - profile information
+    - Profile snapshot
+    - Show my Profile
+    - To check existing profile details
+
+# sheet 7- standing instruction-mobile no and dob
+- intent: SetSI
+  examples: |
+    - Activate Auto Debit
+    - auto debit option
+    - auto ecs registration
+    - auto pay
+    - can you set my SI
+    - can you set my standing instructions
+    - Change ECS
+    - credit card update
+    - ECS
+    - How To Activate ECS
+    - I want to change my premium payment standing instructions
+    - i want to set SI
+    - I want to set standing instructions
+    - i want to start electronic payment
+    - Make changes to SI
+    - mandate attachment
+    - Need to change SI
+    - online instruction
+    - set auto ecs registration
+    - set si
+    - set standing instructions
+    - SI
+    - standing instruction
+    - Standing instruction/ auto debit
+    - Unable to enable SI for my policies
+    - update credit card information
+    - want to change the auto pay option for
+    - Want to modify SI
+
+# sheet 8- request a callback-customer_type ,mobile_number and dob
+- intent: request_a_callback
+  examples: |
+    - call for assistance
+    - get a call
+    - request a call back
+    - Request Callback
+    - To get a call for assistance
+
+- intent: provide_customer_type
+  examples: |
+    - [New Customer](customer_type)
+    - [Existing Customer](customer_type)
+
+# sheet 9-pan update-mobile no,dob
+- intent: PANUpdate
+  examples: |
+    - can u assist me for Pan card updation
+    - can u share the details for PAN updation
+    - Can you give me guidance on pan update
+    - can you help me with pan card updation
+    - Can you help update pan
+    - can you plz help me for pan card updation
+    - could u plz help me for Update PAN
+    - declaration of PAN
+    - details of pancard updation
+    - details of Update PAN
+    - details of Update pancard
+    - Give pan for update
+    - Give pan to you
+    - Give request for update pan
+    - Giv pan no
+    - Giv pan number
+    - Gv pan
+    - how can I get the details of PAN card updation
+    - How can I update Pan
+    - how can I update PAN card
+    - how can I update PAN number
+    - how can I update the PAN number
+    - How do I I give my PAN
+    - How do I update PNA
+    - how to modify PAN number
+    - how to update pan
+    - how to Update PAN number
+    - I want to add pan
+    - I want to add pan in policy
+    - I want to change pan
+    - I want to create PAN
+    - I want to give pan
+    - I want to know about PAN card updation
+    - I want to know abt PAN updation
+    - I want to know abt process of PAN card updation
+    - I want to know how to update pan
+    - I want to knw abt how to update PAN
+    - I want to knw the details of PAN card
+    - I want to put Pan to policy
+    - I want to register PAN
+    - I want to update my PAN
+    - I want to update PAN
+    - I want to update PAN Number
+    - I want to update the pan number
+    - I want to updte PAN
+    - may I get details of Update PAN
+    - may I know the procedure for Pan card updation
+    - may I know the process of PAN updation
+    - may I knw the steps of pan updation
+    - modification of PAN card
+    - pAN
+    - PAN card declaration
+    - PAN card detail
+    - pan card details
+    - PAN card updation procedure
+    - pan declaration
+    - Pan nmbr update
+    - Pan no
+    - Pan no to be updated in my details
+    - Pan no update
+    - pan number
+    - PAN number to be update
+    - PAN number update in my policy
+    - Pan number update on website where
+    - Pan number update to be done
+    - pan update
+    - PAN update details
+    - pan updation
+    - Permenant Account number
+    - Please guide me to update PAN
+    - Please help me with update PAN
+    - please share the details of Pan Card Updation
+    - plz share the details of Update PAN Card
+    - Pn number to be updated
+    - process for modification of PAN card
+    - Process for pan no
+    - Process for pan updation
+    - upadting PAN process
+    - Update my Pan
+    - update my pan number
+    - update Pan
+    - update pan card
+    - update pan card details
+    - update PAN Card number
+    - Update pan in policy
+    - Update pan no
+    - updating PAN details
+    - updating PAN number
+    - Updt pan
+    - want to get details of PAN updation
+    - Website process for update of PAN
+    - what are the steps for PAN card updation
+    - What are the steps to update pan
+    - what is the procedure for pan updation
+    - what is the procedure for updation of PAN card
+    - what is the process for PAN Updation
+    - what is the process for Upadte PAN
+    - what steps involved for PAN card updation
+    - Where can I give pan
+    - Where can I update pan
+    - Where can I update pan in website
+    - Where to update pan on website
+    - wht r the steps of update pan
+
+- intent: claim_status
+  examples: |
+    - Claim follow-up
+    - Claim inquiry
+    - Claim progress
+    - Claim resolution
+    - Claims help
+    - Claim Status
+    - ClaimStatus
+    - Claim tracking
+    - Claim update
+    - Death Claim Status
+    - I had made a policy claim
+    - I want to know my claim status
+    - Status of claim
+    - Status of my claims
+    - Track Claim
+    - Track claims
+    - track claim status
+    - What is the status of my claim
+    - Where is my claim
+
+- intent: provide_claim_number
+  examples: |
+    - My claim number is [CL10600](claim_number)
+    - It's [CL10601](claim_number)
+    - Claim number: [CL10602](claim_number)
+    - The number is [CL10599](claim_number)
+
+- intent: FAQs
+  examples: |
+    - FAQs
+    - frequently asked questions
+

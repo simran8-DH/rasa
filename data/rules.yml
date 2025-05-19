@@ -1,0 +1,37 @@
+version: "3.1"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+
+- rule: Respond to claim status
+  steps:
+    - intent: claim_status
+    - action: utter_ask_claim_number
+
+- rule: Check claim status after receiving claim number
+  steps:
+    - intent: provide_claim_number
+    - slot_was_set:
+        - claim_number
+    - action: action_check_claim_status
+
+- rule: Respond to FAQs
+  steps:
+    - intent: FAQs
+    - action: utter_FAQs
+
+
+# - rule: Custom fallback
+#   steps:
+#   - intent: nlu_fallback
+#   - action: action_custom_fallback

@@ -1,0 +1,44 @@
+# Python specific
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+venv.bak/
+*.egg
+*.egg-info/
+.eggs/
+*.log
+
+# Rasa specific
+logs/
+credentials.yml
+endpoints.yml
+*.tar.gz
+*.zip
+
+# Cache and temp files
+*.DS_Store
+Thumbs.db
+
+# IDE specific
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Node modules (if any node integration exists)
+node_modules/
+
+# Environment variables
+.env
+*.env
+
+# Docker related
+docker-compose.override.yml
+.rasa/
+volumes/
+.dockerignore
