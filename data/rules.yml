@@ -31,7 +31,8 @@ rules:
     - action: utter_FAQs
 
 
-# - rule: Custom fallback
-#   steps:
-#   - intent: nlu_fallback
-#   - action: action_custom_fallback
+- rule: Custom fallback
+  steps:
+  # nlu_fallback is built-in intent that Rasa triggers automatically when the predicted intent's confidence is below the fallback threshold (like 0.4) and rasa handles it internally using the FallbackClassifier.
+  - intent: nlu_fallback
+  - action: action_custom_fallback

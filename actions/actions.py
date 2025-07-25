@@ -206,8 +206,9 @@ class ActionProcessUserRequest(Action):
 
         # to reset the slots created as none so that bot can reask the dob and mobile number    
         return [
-            SlotSet("mobile_number", None),
-            SlotSet("dob", None),
+            # so that user is not asked to enter mobile no and dob again and again
+            # SlotSet("mobile_number", None),
+            # SlotSet("dob", None),
             SlotSet("user_goal", None),
             SlotSet("statement_type", None),
             SlotSet("customer_type", None),
@@ -311,10 +312,15 @@ class ValidateCallbackForm(FormValidationAction):
     async def validate_dob(self, slot_value, dispatcher, tracker, domain):
         return validate_dob(slot_value, dispatcher)
 
-# class CustomFallback(Action):
-#     def name(self):
-#         return "action_custom_fallback"
+class CustomFallback(Action):
+    def name(self):
+        return "action_custom_fallback"
 
-#     def run(self, dispatcher, tracker, domain):
-#         dispatcher.utter_message("I'm sorry, I didn't understand that.")
-#         return [UserUtteranceReverted()]  # so the user can try again
+    def run(self, dispatcher, tracker, domain):
+        confidence = tracker.latest_message.get("intent", {}).get("confidence", 0)
+        print(confidence)
+        if confidence < 0.4:
+            dispatcher.utter_message(
+                f"I'm not sure I understood \"{tracker.latest_message.get('text')}\". Can you please rephrase?"
+            )
+            return [UserUtteranceReverted()] # so the user can try again

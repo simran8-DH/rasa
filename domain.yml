@@ -286,8 +286,9 @@ responses:
   - text: "You can find answers to FAQs on official website: https://darkhorsedigital.co.in/"
 
 session_config:
-  session_expiration_time: 60
-  carry_over_slots_to_new_session: true
+  session_expiration_time: 60      # session ends after 5 minutes of inactivity
+  carry_over_slots_to_new_session: false  # do NOT carry any slot values into the new session
+
 
 actions:
   - action_process_user_request
@@ -305,4 +306,4 @@ actions:
   - validate_statements_form
   - validate_paypremium_form
   - validate_callback_form                     
-  # - action_custom_fallback
+  - action_custom_fallback
