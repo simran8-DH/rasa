@@ -1,0 +1,75 @@
+openapi: 3.0.0
+info:
+  title: Rasa Chatbot API
+  version: "1.0"
+  description: API documentation for Rasa chatbot interaction and testing
+
+servers:
+  - url: http://localhost:5005
+
+paths:
+  /webhooks/rest/webhook:
+    post:
+      summary: Send a message to the bot
+      description: Sends a user message and gets bot reply
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - sender
+                - message
+              properties:
+                sender:
+                  type: string
+                  example: "user123"
+                message:
+                  type: string
+                  example: "Hello"
+      responses:
+        '200':
+          description: Bot response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    recipient_id:
+                      type: string
+                    text:
+                      type: string
+
+  /model/parse:
+    post:
+      summary: Parse a message
+      description: Returns intent and entities of a message
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                  example: "What's my policy status?"
+      responses:
+        '200':
+          description: Parse result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  intent:
+                    type: object
+                  entities:
+                    type: array
+                    items:
+                      type: object
+                  text:
+                    type: string
